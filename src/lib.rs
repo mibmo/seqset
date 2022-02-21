@@ -1,7 +1,7 @@
-const DEFAULT_CHARSET: &'static str = "abcdefghijklmnopqrstuvwxyzæøå";
+pub const DEFAULT_CHARSET: &'static str = "abcdefghijklmnopqrstuvwxyzæøå";
 
 #[derive(Debug, Clone, Copy)]
-struct Sequence<'a> {
+pub struct Sequence<'a> {
     charset: &'a str,
     output_length: usize,
     charset_size: usize,
@@ -11,11 +11,11 @@ struct Sequence<'a> {
 }
 
 impl<'a> Sequence<'a> {
-    fn new(output_length: usize) -> Self {
+    pub fn new(output_length: usize) -> Self {
         Self::with_charset(output_length, DEFAULT_CHARSET)
     }
 
-    fn with_charset(output_length: usize, charset: &'a str) -> Self {
+    pub fn with_charset(output_length: usize, charset: &'a str) -> Self {
         let charset_size = charset.chars().count();
         let last_valid_n = if output_length == 0 {
             0
